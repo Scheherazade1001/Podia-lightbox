@@ -1,0 +1,139 @@
+<style>
+  /* --- Gallery grid --- */
+  .ts-gallery { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 12px; 
+    align-items: start; 
+  }
+  .ts-gallery a { 
+    display: block; 
+    position: relative; 
+    overflow: hidden; 
+    border-radius: 8px; 
+  }
+  .ts-gallery img { 
+    width: 100%; 
+    height: 160px; 
+    object-fit: cover; 
+    display: block; 
+    transition: transform .25s ease; 
+  }
+  .ts-gallery a:hover img { transform: scale(1.03); }
+
+  /* --- CSS-only lightbox using :target --- */
+  .ts-lightbox { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,.85); 
+    display: none; 
+    z-index: 9999; 
+  }
+  .ts-lightbox:target { display: block; }
+
+  .ts-lightbox__content { 
+    position: absolute; 
+    inset: 0; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 5vw; 
+  }
+  .ts-lightbox__img { 
+    max-width: 90vw; 
+    max-height: 85vh; 
+    box-shadow: 0 10px 30px rgba(0,0,0,.6); 
+    border-radius: 10px; 
+  }
+
+  /* Close button */
+  .ts-lightbox__close { 
+    position: absolute; 
+    top: 14px; 
+    right: 16px; 
+    font: 600 18px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; 
+    color: #fff; 
+    background: rgba(255,255,255,.15); 
+    padding: 10px 14px; 
+    border-radius: 999px; 
+    text-decoration: none; 
+    backdrop-filter: blur(4px); 
+  }
+  .ts-lightbox__close:focus, .ts-lightbox__close:hover { background: rgba(255,255,255,.25);} 
+
+  /* Click anywhere outside the image to close */
+  .ts-lightbox__bg { position: absolute; inset: 0; }
+
+  /* Optional caption styling */
+  .ts-caption { 
+    margin-top: 10px; 
+    color: #fff; 
+    text-align: center; 
+    font: 500 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; 
+  }
+</style>
+
+<div class="ts-gallery">
+  <!-- Thumbnail links (replace URLs) -->
+  <a href="#ts-lightbox-1"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Sample 1"></a>
+  <a href="#ts-lightbox-2"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&q=80" alt="Sample 2"></a>
+  <a href="#ts-lightbox-3"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=800&q=80" alt="Sample 3"></a>
+  <a href="#ts-lightbox-4"><img src="https://images.unsplash.com/photo-1520975922284-2791b37c6051?w=800&q=80" alt="Sample 4"></a>
+  <a href="#ts-lightbox-5"><img src="https://images.unsplash.com/photo-1520974735194-55f9e3f0f2d6?w=800&q=80" alt="Sample 5"></a>
+  <a href="#ts-lightbox-6"><img src="https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?w=800&q=80" alt="Sample 6"></a>
+</div>
+
+<!-- Lightbox overlays (replace the LARGE image URLs below if you have bigger versions) -->
+<div id="ts-lightbox-1" class="ts-lightbox" aria-hidden="true">
+  <a href="#" class="ts-lightbox__bg" aria-hidden="true"></a>
+  <div class="ts-lightbox__content">
+    <img class="ts-lightbox__img" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=2000&q=80" alt="Sample 1 large">
+    <a class="ts-lightbox__close" href="#" aria-label="Close">Close ×</a>
+  </div>
+  <div class="ts-caption">Sample caption one</div>
+</div>
+
+<div id="ts-lightbox-2" class="ts-lightbox" aria-hidden="true">
+  <a href="#" class="ts-lightbox__bg" aria-hidden="true"></a>
+  <div class="ts-lightbox__content">
+    <img class="ts-lightbox__img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=2000&q=80" alt="Sample 2 large">
+    <a class="ts-lightbox__close" href="#" aria-label="Close">Close ×</a>
+  </div>
+  <div class="ts-caption">Sample caption two</div>
+</div>
+
+<div id="ts-lightbox-3" class="ts-lightbox" aria-hidden="true">
+  <a href="#" class="ts-lightbox__bg" aria-hidden="true"></a>
+  <div class="ts-lightbox__content">
+    <img class="ts-lightbox__img" src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=2000&q=80" alt="Sample 3 large">
+    <a class="ts-lightbox__close" href="#" aria-label="Close">Close ×</a>
+  </div>
+  <div class="ts-caption">Sample caption three</div>
+</div>
+
+<div id="ts-lightbox-4" class="ts-lightbox" aria-hidden="true">
+  <a href="#" class="ts-lightbox__bg" aria-hidden="true"></a>
+  <div class="ts-lightbox__content">
+    <img class="ts-lightbox__img" src="https://images.unsplash.com/photo-1520975922284-2791b37c6051?w=2000&q=80" alt="Sample 4 large">
+    <a class="ts-lightbox__close" href="#" aria-label="Close">Close ×</a>
+  </div>
+  <div class="ts-caption">Sample caption four</div>
+</div>
+
+<div id="ts-lightbox-5" class="ts-lightbox" aria-hidden="true">
+  <a href="#" class="ts-lightbox__bg" aria-hidden="true"></a>
+  <div class="ts-lightbox__content">
+    <img class="ts-lightbox__img" src="https://images.unsplash.com/photo-1520974735194-55f9e3f0f2d6?w=2000&q=80" alt="Sample 5 large">
+    <a class="ts-lightbox__close" href="#" aria-label="Close">Close ×</a>
+  </div>
+  <div class="ts-caption">Sample caption five</div>
+</div>
+
+<div id="ts-lightbox-6" class="ts-lightbox" aria-hidden="true">
+  <a href="#" class="ts-lightbox__bg" aria-hidden="true"></a>
+  <div class="ts-lightbox__content">
+    <img class="ts-lightbox__img" src="https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?w=2000&q=80" alt="Sample 6 large">
+    <a class="ts-lightbox__close" href="#" aria-label="Close">Close ×</a>
+  </div>
+  <div class="ts-caption">Sample caption six</div>
+</div>
